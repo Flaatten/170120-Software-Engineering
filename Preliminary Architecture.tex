@@ -1,0 +1,303 @@
+
+\documentclass[pdftex, 10pt, norsk, a4paper, twoside]{article} 
+\usepackage[margin=1.3in]{geometry}	
+\usepackage[english]{babel} 
+\selectlanguage{english}
+\usepackage[T1]{fontenc} 					
+\usepackage[utf8]{inputenc} 							
+\usepackage{csquotes}
+\usepackage{graphicx} 			
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[version=3]{mhchem}
+\usepackage{multirow}								
+\usepackage{lmodern}
+\usepackage{amsmath , amsfonts , amssymb}			
+\usepackage[hang,footnotesize,bf]{caption}
+\usepackage{epstopdf}			
+\usepackage{fixltx2e}
+\usepackage{textcomp,gensymb}		
+\usepackage{float}
+\usepackage{tabu}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor,colortbl}
+\usepackage{array}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{hyperref}
+\usepackage{floatrow}
+\restylefloat{table}
+
+\definecolor{Gray}{gray}{0.85}
+
+\setlist[enumerate]{label*=\arabic*.}% formatering av topp og bunntekst.
+
+\pagestyle {fancy}																		% Velger standardoppsettet "fancy" for topp og bunntekst.
+\setlength\headheight{22.5pt}													% Endrer standard størrelse på topptekst, som er 12pt. 
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\lhead{Andreas Wilhelm Flått \\ Erlend Johann Skarpnes \\ Håvard Bjørnøy \\ Johannes Austbø Grande}						% Definerer venstre side av toppteksten. "\\" betyr linjeskift.
+\rhead{TDT4140 -- Software Engineering \\ \today}	% Definerer høyre side av toppteksten. \today betyr datoen det kompileres.
+\lfoot{}
+\cfoot{\thepage}																% Definerer Midten av bunnteksten. \thepage betyr gjeldende sidetall.
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.4pt}				% tegner en strek med tykkelse 0.4pt under toppteksten.
+\renewcommand{\footrulewidth}{0.0pt}				% fjerner streken over bunnteksten (setter tykkelsen til 0.0pt)
+
+%%% fjerner streken, og topp- og bunntekst på sider som ellers er blanke.
+\let\oldcleardoublepage\cleardoublepage 
+\renewcommand{\cleardoublepage}{\clearpage\thispagestyle{empty}\oldcleardoublepage}
+
+\begin{document}
+
+\makeatletter
+
+\newcolumntype{g}{>{\columncolor{Gray}}c}
+
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+\hfill\\ % Tvungen newline (fyller linjen med spaces)
+
+\begin{center} % Tittelen på dokumentet; sentrert, stor og fet.
+\LARGE{\textbf{Preliminary Architecture}}
+
+\abstract Here is a summary of our architectural decisions when developing a counsel chatbot. The document contains five major software architectural decisions, in which we specify information related to the decision. %%of the decision, problems concerning the decision, related stakeholder concerns, related user stories, solution candidates, influencing forces and evaluation.
+
+\tableofcontents
+
+\newpage %% START TABELL 1
+ 
+\hfill
+\section*{\centering{api.ai}}
+\addcontentsline{toc}{section}{api.ai}
+
+\begin{table}[H]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{| >{\centering\arraybackslash} m{4cm} | m{9cm} | }
+\hline
+Description & Implementing the (bot product or interface?)!!!! as a chatbot
+\\
+\hline
+Problem & Produce an easy intuitive interface of our product.
+\\
+\hline
+Stakeholder concerns & The UI might be ambiguous which would make it difficult for the user to find the information they need
+\\
+\hline
+Related user stories & The decision to have a chatbot as an interface affects the user stories that revolve around having an easy interface.
+\\
+\hline
+Solution & Develop a chatbot that the user can talk to about concerns regarding switching masters, deadlines and relevant contact info. This way it can be implemented in websites without taking a lot of space.
+\\
+\hline
+Considered alternative solutions & Creating a user interface which let you navigate all the functions.
+\\
+\hline
+Positive influencing forces& 
+\begin {itemize}
+    \item Easy to implement and update with new functions
+    \item Using api.ai as an interface might increase security and make us less vulnerable to malicious software (er vi sikre på dette??)
+    \item Easy for new users to use since you can just ask the bot a question like it was a councilor
+    %\item We want to learn this software
+\end{itemize}
+\\
+\hline
+Negative influencing forces&
+\begin {itemize}
+    \item We have no experience with this software
+    \item Users might have problems with finding relevant information
+\end{itemize}
+\\
+\hline
+Evaluation& As a team we think this software is very exiting. It has a great potential since we can keep working on it without changing the interfaces for the user. Since we haven't got any experience we reserve the opportunity to make a regular navigational GUI.
+\\
+\hline
+\end{tabular}}
+\end{table}
+\end{center}  
+%% END TABELL 1
+
+\newpage
+
+\begin{center} %% START TABELL 1
+
+\hfill
+
+\section*{\centering{Make Java app}}
+\addcontentsline{toc}{section}{Make Java app}
+
+\begin{tabular}{| >{\centering\arraybackslash} m{4cm} | m{9cm} | }
+\hline
+Description & Implementing the bot using a java app for PC. \\
+\hline
+Problem & The user needs a way to interact with the bot. \\
+\hline
+Stakeholder concerns & The bot might be too difficult to use, making it easier to go to a councilor. \\
+\hline
+Related user stories & The decision affects all user stories related to front end. \\
+\hline
+Solution & Making an easy GUI without to many functions that might confuse the user. \\
+\hline
+Considered alternative solutions & 
+\begin{itemize}
+    \item Implementing the bot using a web app, thus no installation or downloading of java files is required
+    \item Implementing the bot using a mobile app. This will make the bot more easily available for the user
+\end{itemize} \\
+\hline
+Positive influencing forces &
+\begin{itemize}
+    \item Easier to make than other solutions, due to the developers familiarity with java
+    \item Easier to make a good GUI for PC, due to the larger screen and the need for presenting the user with graphical representations of schedules and study plans
+    \item Saving effort by skipping multiple GUIs, as would be needed if developed for mobile platforms
+\end{itemize} \\
+\hline
+Negative influencing forces &
+\begin{itemize}
+    \item User will have to download a JRE distribution in order to run the program
+    \item The program will be less portable
+\end{itemize} \\
+\hline
+Evaluation &  As a team we have decided to focus on the concept and using the languages we know. Therefore we ended up making a Java app even though a web-app might reach the students better. The java-app will be a ready commercial product, but to use it in a larger university it would be wiser to implement it into a web server. \\
+\hline
+\end{tabular}
+\end{center}  %% END TABELL 1
+
+\newpage
+
+\begin{center} %% START TABELL 1
+
+\hfill
+
+\section*{\centering{Make own database}}
+\addcontentsline{toc}{section}{Make own database}
+
+\begin{tabular}{| >{\centering\arraybackslash} m{4cm} | m{9cm} | }
+\hline
+Description & Making our own customized database to aid our algorithm \\
+\hline
+Problem & The algorithm needs a lot of information about subjects, and the app should be scalable.\\
+\hline
+Stakeholder concerns & Scalability and structure \\
+\hline
+Related user stories& This decision affects all user stories \\
+\hline
+Solution & Develop a database using a system like MySQL (subject to change). This database will most likely be at a remote location with internet access from all our users. Security will be a concern when developing the database, and we will need proper sanitizing of input. The app should be the only entity with direct communication to the database, with an admin backdoor for troubleshooting and bug-squishing. \\
+\hline
+Considered alternative solutions&
+\begin{itemize}
+    \item Have the application directly communicate with NTNU's api about subjects.
+\end{itemize}\\
+\hline
+Positive influencing forces& 
+\begin{itemize}
+    \item Enables customized information about subjects
+    \item Quicker to query then NTNU's api
+    \item More stability
+    \item Better Scalability
+\end{itemize}\\
+\hline
+Negative influencing forces& 
+\begin{itemize}
+    \item Takes time to develop
+\end{itemize}\\
+\hline
+Evaluation& The database solution has been a given since we started the project. We have planned to implement the database late in the project, since the wanted structure is a subject to change according to how we implement the algorithm that is to use it.\\
+\hline
+\end{tabular}
+\end{center}  %% END TABELL 1
+
+\newpage
+
+\begin{center} %% START TABELL 1
+
+\hfill
+
+\section*{\centering{Use NTNU's api}}
+\addcontentsline{toc}{section}{Use NTNU's api}
+
+\begin{tabular}{| >{\centering\arraybackslash} m{4cm} | m{9cm} | }
+\hline
+Description & Use NTNU's api to get information about the subjects which we will be optimizing a schedule for. \\
+\hline
+Problem & We need information to fill our database and algorithm \\
+\hline
+Stakeholder concerns & The stability of NTNU's api\\
+\hline
+Related user stories & This decision affects all user stories regarding the change of masters \\
+\hline
+Solution & Make a program able to query NTNU's api and insert it into the database. As we work on the project, it will become clear exactly what we need to query and insert. \\
+\hline
+Considered alternative solutions& 
+\begin{itemize}
+    \item Make our own webscraper. This would be programmed to go through ntnu.no and extract information about subjects.
+\end{itemize}\\
+\hline
+Positive influencing forces& 
+\begin{itemize}
+    \item It reduces our workload by not making a webscraper, and reduces the risk of us not being able to get the webscraper to work as we want.
+\end{itemize}\\
+\hline
+Negative influencing forces& 
+\begin{itemize}
+    \item We do not know how the NTNU's api works. It might take more time than we think to implement
+    \item It might be unstable/full of bugs
+\end{itemize}\\
+\hline
+Evaluation & There is some concerns when it comes to using the NTNU's api. It is however most likely better then the alternative, which is webscraping. \\
+\hline
+\end{tabular}
+\end{center}  %% END TABELL 1
+
+
+
+
+\begin{center} %% START TABELL 1
+
+\hfill
+
+\newpage
+
+\hfill 
+\section*{\centering{Use crowdsourcing}}
+\addcontentsline{toc}{section}{Use crowdsourcing}
+
+\begin{tabular}{| >{\centering\arraybackslash} m{4cm} | m{9cm} | } 
+\hline
+Description & Use crowdsourcing to improve the information given by the bot \\
+\hline
+Problem & The crowdsourced information might be difficult to make sense of, and might be inaccurate since the information is gathered from human beings. \\
+\hline
+Stakeholder concerns & It might be difficult to get enough information about a given course. \\
+\hline
+Related user stories & This decision affects all user stories. \\
+\hline
+Solution & Gather information from students during development, and keep updating this information. \\
+\hline
+Considered alternative solutions &
+\begin{itemize}
+    \item Using statistical analysis based on anonymous grades from students
+    \item Relying solely on what the university tells us about their courses
+\end{itemize} \\
+\hline
+Positive influencing forces &
+\begin{itemize}
+    \item Information is gathered from students who actually takes the course, and will probably contain more in dept information than the alternatives
+\end{itemize} \\
+\hline
+Negative influencing forces &
+\begin{itemize}
+    \item More time-consuming than the other options
+    \item Will need more space to store the information
+    \item The algorithms that give users advice about courses will be more complex
+\end{itemize} \\
+\hline
+Evaluation & As a team we are confident that involving information from students will improve the value of the program if implemented correctly. \\
+\hline
+\end{tabular}
+\end{center}  %% END TABELL 1
+\end{document}

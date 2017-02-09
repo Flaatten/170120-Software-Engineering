@@ -1,0 +1,98 @@
+\documentclass[pdftex, 12pt, norsk, a4paper, twoside]{article} 
+
+\usepackage[margin=1.3in]{geometry}	
+\usepackage[english]{babel} 
+\selectlanguage{english}
+\usepackage[T1]{fontenc} 					
+\usepackage[utf8]{inputenc} 							
+\usepackage{csquotes}
+\usepackage{graphicx} 			
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[version=3]{mhchem}
+\usepackage{multirow}								
+\usepackage{lmodern}
+\usepackage{amsmath , amsfonts , amssymb}			
+\usepackage[hang,footnotesize,bf]{caption}
+\usepackage{epstopdf}			
+\usepackage{fixltx2e}
+\usepackage{textcomp,gensymb}		
+\usepackage{float}																
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\setlist[enumerate]{label*=\arabic*.}% formatering av topp og bunntekst.
+
+\pagestyle {fancy}																		% Velger standardoppsettet "fancy" for topp og bunntekst.
+\setlength\headheight{22.5pt}													% Endrer standard størrelse på topptekst, som er 12pt. 
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\lhead{Andreas Wilhelm Flått \\ Erlend Johann Skarpnes \\ Håvard Bjørnøy \\ Johannes Austbø Grande}						% Definerer venstre side av toppteksten. "\\" betyr linjeskift.
+\rhead{TDT4140 -- Software Engineering \\ \today}	% Definerer høyre side av toppteksten. \today betyr datoen det kompileres.
+\lfoot{}
+\cfoot{\thepage}																% Definerer Midten av bunnteksten. \thepage betyr gjeldende sidetall.
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.4pt}				% tegner en strek med tykkelse 0.4pt under toppteksten.
+\renewcommand{\footrulewidth}{0.0pt}				% fjerner streken over bunnteksten (setter tykkelsen til 0.0pt)
+
+%%% fjerner streken, og topp- og bunntekst på sider som ellers er blanke.
+\let\oldcleardoublepage\cleardoublepage 
+\renewcommand{\cleardoublepage}{\clearpage\thispagestyle{empty}\oldcleardoublepage}
+
+\begin{document}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+\hfill\\ % Tvungen newline (fyller linjen med spaces)
+
+\begin{center} % Tittelen på dokumentet; sentrert, stor og fet.
+\LARGE{\textbf{Programvareutvikling}}
+\end{center}
+
+\abstract{The epicenter of the project is to identify the top 5 problems of university education from the viewpoint of professors or teachers and propose a concept for our RoBOT. Our group has chosen to interview Hallvard Trætteberg and Magnus Lie Hetland. Hallvard and Magnus is both associate professors and work for the Department of Computer Science (IDI) in their respective fields; Hallvard with more than 10 years of experience teaching object-oriented programming (TDT4100), while Magnus has been working for IDI since 2004 and has been responsible for the course Algorithms and Datastructures (TDT4120) since 1999.}
+
+
+\hfill\\ % Tvungen newline (fyller linjen med spaces)
+\section{Interview}
+When questioned about what could solve the top-5 problems today in university education, the professors gave us the following list:
+\begin{enumerate} %% Starter nummerert liste
+
+\item \textit{Dynamic exercises. }
+
+These exercises would change depending on how well the student did in the subject. This would help the professor get a view of how well the students know the curriculum, as well as proposing challenges to the advanced students while still being manageable for the students struggling to get by. This could also be extended to repetition before the exam, where if you get a question wrong, a similar question will be asked again later. (Spaced repetition)
+
+\item \textit{Automatic interactive grading of exercises. }
+
+To this day, students either get their exercises graded by an automated system, where you get either right or wrong, or get their exercises graded by a student assistant, which requires time, manpower, and money. Such a bot would be able to take a unfinished exercise, and give the student a hint for what should be done next. It would also be able to give help with syntax on code in common languages. This bot could also be able to find out how the students work on their exercises, based on what they submit while working. The results would be compiled and sent to the professor, which can use it to better understand how the students work on the exercises.
+
+\newpage
+
+\hfill\\ % Tvungen newline (fyller linjen med spaces)
+\item \textit{Exams.}
+
+It is hard to make a good exam, and it takes a lot of expensive manpower to grade them. A bot in this aspect should be able to take the curriculum as input, and output a set of questions which cover the curriculum in a satisfactory way. If the subject allows it, the exam could also be automatically graded.
+
+\item \textit{Real-time feedback in classes. }
+
+This bot would be able to help the professor and students find a suiting pace in the lecture. It can be embarrassing to ask the professor to repeat something or lecture slower. This bot would continuously ask the students on their PC for questions to the lecture or if the pace is OK, and display it to the professor after compiling the results.
+
+\item \textit{Automated student counselling and active maintenance of communication lines. }
+
+This bot would keep track of how well the students are doing in their exercises and lectures, and give recommendations on what to work more on or what to test yourself in. This could also be connected up to the professors and student assistants, so that if the student can't keep up with the lectures and exercises, they would automatically be warned. The student could then be helped without asking him/herself, which can often be hard.
+
+\end{enumerate}
+\section{Conclusion}
+Our group has chosen to base our idea on point five in the interview regarding the automated counselling. Instead of a bot that monitors the students, we want to move forward with a bot that can replace much of the tedious work of the counsellors. Our focus was students switching masters. We have experienced that there is quite a lot of students regretting their choice of study. However, they choose to stay rather than going through the trouble of tailoring their schedule to fit the switch. This bot will help students wanting to switch their line of study to pick the correct courses, making the switch as smooth as possible, and lessening the workload on the student counsellors.
+\par This bot could also be tailored to fit other tasks that counsellors would do. Such tasks could be a mapping of different subjects and what other subjects they are dependent on. This can help new student find out what direction they want to take their masters by knowing what subjects build on each other. As an example from our own master: If you liked TDT4120 (Algorithms and Data Structures) you could find that many other subject build on it from the direction "Algorithms and HPC".
+
+Our work-in-progress name for the bot is "Anna, the Counselbot".
+
+\end{document} 

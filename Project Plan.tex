@@ -1,0 +1,304 @@
+
+\documentclass[pdftex, 12pt, norsk, a4paper, twoside]{article} 
+\usepackage[margin=1.3in]{geometry}	
+\usepackage[english]{babel} 
+\selectlanguage{english}
+\usepackage[T1]{fontenc} 					
+\usepackage[utf8]{inputenc} 							
+\usepackage{csquotes}
+\usepackage{graphicx} 			
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[version=3]{mhchem}
+\usepackage{multirow}								
+\usepackage{lmodern}
+\usepackage{amsmath , amsfonts , amssymb}			
+\usepackage[hang,footnotesize,bf]{caption}
+\usepackage{epstopdf}			
+\usepackage{fixltx2e}
+\usepackage{textcomp,gensymb}		
+\usepackage{float}
+\usepackage{tabu}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor,colortbl}
+\usepackage{array}
+\usepackage{multirow}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{hyperref}
+
+\definecolor{Gray}{gray}{0.85}
+
+\setlist[enumerate]{label*=\arabic*.}% formatering av topp og bunntekst.
+
+\pagestyle {fancy}																		% Velger standardoppsettet "fancy" for topp og bunntekst.
+\setlength\headheight{22.5pt}													% Endrer standard størrelse på topptekst, som er 12pt. 
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\lhead{Andreas Wilhelm Flått \\ Erlend Johann Skarpnes \\ Håvard Bjørnøy \\ Johannes Austbø Grande}						% Definerer venstre side av toppteksten. "\\" betyr linjeskift.
+\rhead{TDT4140 -- Software Engineering \\ \today}	% Definerer høyre side av toppteksten. \today betyr datoen det kompileres.
+\lfoot{}
+\cfoot{\thepage}																% Definerer Midten av bunnteksten. \thepage betyr gjeldende sidetall.
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.4pt}				% tegner en strek med tykkelse 0.4pt under toppteksten.
+\renewcommand{\footrulewidth}{0.0pt}				% fjerner streken over bunnteksten (setter tykkelsen til 0.0pt)
+
+%%% fjerner streken, og topp- og bunntekst på sider som ellers er blanke.
+\let\oldcleardoublepage\cleardoublepage 
+\renewcommand{\cleardoublepage}{\clearpage\thispagestyle{empty}\oldcleardoublepage}
+
+\begin{document}
+
+\makeatletter
+
+\newcolumntype{g}{>{\columncolor{Gray}}c}
+
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+\hfill\\ % Tvungen newline (fyller linjen med spaces)
+
+\begin{center} % Tittelen på dokumentet; sentrert, stor og fet.
+\LARGE{\textbf{Project Plan}}
+
+\tableofcontents
+
+\newpage
+
+\end{center}
+
+\hfill
+\hfill
+
+
+\section{Team Information}
+
+The team consist of four highly motivated students currently studying in their second year of computer science on NTNU. We have chosen to allocate the following responsibilities:
+
+\hfill
+
+{\setlength{\parindent}{0cm}
+\textbf{Team Leader} - Erlend Johann Skarpnes\\
+\textbf{Developer} - Håvard Bjørnøy\\
+\textbf{Developer} - Johannes Austbø Grande\\
+\textbf{Developer} - Andreas Wilhelm Flått\\
+}
+
+\section{Problem}
+
+\subsection{Opportunity}
+
+Our team have been in touch with students and has members that have been through the process of switching majors. This process can be difficult and time consuming for a student, and if they get it wrong they might fail courses or lose motivation. It can be quite difficult to compose a schedule for the next year and more so for the rest of your study. More advanced courses have recommended or required courses you should or must have passed. Exams may conflict or be on consecutive days. Since you might have to take courses from different years of the regular study plan, you are very prone to overlap. This combined with possible personal events etc. makes it a very challenging task to put together a good schedule. \\
+
+Why is this problem so important to fix?
+If it’s easier to switch between majors, then more people will be inclined to study what they really want instead of just choosing the default option and keep studying their original major. We think this will contribute to better mental health and thriving students. 
+
+\newpage
+\hfill
+\hfill
+
+\subsection{Stakeholders}
+
+Stakeholders:
+\begin{itemize}
+    \item NTNU
+    \item Student counsellors
+    \item Students
+\end{itemize}
+Our end users are students who are changing majors. As mentioned earlier, this can be a confusing task due to the many different ways of combining the residual subjects. It must also be aligned with the students preferences and limitations. Our product seeks to optimize this. It can also help student counsellors with the same task, effectively relieving them of some of the workload. Most of the student counsellors at IME doesn't have the necessary background in the vast field of computer science subjects. Therefore, a bot should make them able to give better advice.
+
+\subsection{Requirement}
+We are making a bot to meet the needs of the end-user and ease the transition of changing majors. What the bot needs to do is:
+\begin{itemize}
+    \item Compose a study plan after receiving information about the courses the student has passed, and the major they are switching to
+    \item Give information about exam dates and schedule
+    \item Tell the user about the disadvantages of the plan
+    \item Be able to modify and show more options if the user is not satisfied
+    \item Have a good GUI
+    \item Give the user a good study plan based on other students experiences
+\end{itemize}
+
+\newpage
+\hfill
+\hfill
+
+\section{Solution}
+
+\subsection{Deliverables}
+
+Deliverables:
+\begin{itemize}
+    \item Java Program - including schedule algorithms and GUI
+    \item Database - including crowd sourced information
+    \item Webscraper
+\end{itemize}
+Technologies:
+\begin{itemize}
+    \item api.ai
+    \item SQL
+    \item JavaFX
+    \item Java
+    \item Python
+\end{itemize}
+Some universities may not have an easy way to put courses in a database. Courses can also have different kinds of information given about them, which can make it difficult to fill the database with the necessary information and to deploy. 
+%technical restraints: could mention the variations in studyplan information on different websites at NTNU. Makes it challenging to webscrape --> makes it harder to scale up the software. Anything else?
+
+\subsection{Work}
+
+The work that is currently planned in the project can be found in the backlog later in the document. We also have an activity plan with an estimated timeline.
+
+\newpage
+\hfill
+\hfill
+
+\subsection{Team}
+
+\textbf{Team Leader} - Erlend Johann Skarpnes\\
+\textbf{Developer} - Håvard Bjørnøy\\
+\textbf{Developer} - Johannes Austbø Grande\\
+\textbf{Developer} - Andreas Wilhelm Flått\\
+
+\begin{itemize}
+
+\item Erlend is responsible for making sure the team is working in an acceptable pace to meet the deadlines. He sets up meetings, both with his team and his coach, and delegates work to his team, trying his best to utilize their abilities. \\
+
+\item Håvard is responsible for getting information from potential users and making sure our intended users finds our product. He is also responsible for meeting with users and constructing user stories, and will in many ways be the face of the team. In addition, he will assist in developing. \\
+
+\item Johannes is responsible for back-end developing. This involves working with Python to get information from NTNU's servers and putting them in a database. He is also responsible to maintaining the project's Github.\\
+
+\item Andreas is responsible for front-end developing. This involves querying information from the database, and representing them in a way that is easy to understand for the user.
+
+\end{itemize}
+
+
+\subsection{Way of Working}
+\begin{itemize}
+    \item Jetbrains IDE with IntelliJ and PyCharm for writing code
+    \item Github for code-sharing
+    \item Trello for project organization
+    \item ShareLatex for making PDF documents
+\end{itemize}
+
+Our team will use the Kanban method while working. It will be divided into 5 steps; the backlog (or a todo-list), analyse, develop, test, and done. We will use Trello to keep track of the different stages of development. 
+
+\newpage
+\hfill
+\hfill
+
+The team will meet twice a week on predetermined locations at a predetermined time: Mondays at 12:00 and Wednesdays at 14:00. This ensures that the team is working on the project continuously, and as a team, we find it easier to plan our work when we can meet face to face. Outside of these meetings, we have organized communication-lines over Facebook's messenger app. This app is checked daily by every team-member, and instantaneously when we have planned to work from home.
+
+Our quality assurance plan involves frequently testing our product. We aim to have a test coverage of 80\%. This will also be a learning experience for the team, as none have practiced test driven development before. As soon as we have a comprehensible product, we will start user testing. Both with our peers, and people that are in no way associated with computer engineering, to make sure our UI are simple enough for every type of user. This will also ensure that we get the needed feedback from the users of our product, which is going to be students of every possible major.\\
+The risk assessment plan is listed as an appendix further down in the document.
+
+
+\newpage
+\hfill
+\hfill
+
+\begin{center} %% START PRODUCT BACKLOG
+
+\section*{\centering{Appendix}}
+\addcontentsline{toc}{section}{Appendix}
+\subsection*{\centering{Product Backlog}}
+\addcontentsline{toc}{subsection}{Backlog}
+
+\hfill
+\begin{tabular}{| >{\centering\arraybackslash} m{3cm} | m{6.2cm} | >{\centering\arraybackslash} m{2cm} | >{\centering\arraybackslash} m{2cm} | }
+\hline
+\rowcolor{Gray}
+\textbf{Story ID}& \textbf{Story} & \textbf{Estimate}& \textbf{Priority} \\ 
+\hline
+Make Database& Make a database over available courses and other necessary information, and be able to append information to this database.& 3& 1 \\
+\hline
+Query Programs& Be able to extract information from a database.& 2& 2 \\
+\hline
+Schedule algorithms& Give the user good advice about which courses they should take, if they have problems with their current schedule, or if they just want to switch major.& 10& 3 \\
+\hline
+api.ai& Using api.ai to create a string easy to understand for programs, and use this string to give the user feedback about which courses they should take.& 2& 4 \\
+\hline
+Implement GUI& Give the user a GUI that is easy to use with easy access to important information.& 6& 5 \\
+\hline
+Crowdsourcing& Administrators should have information about courses from students that have taken them, so they can provide a better user experience.& 6& 6 \\
+\hline
+Webscraper& Make a webscraper to get information about courses from sites where extraction is not trivial.& 4& 7 \\
+\hline
+\end{tabular}
+\end{center}  %% END PRODUCT BACKLOG
+
+%% START ACTIVITYPLAN
+
+\newpage
+\hfill
+\hfill
+
+
+\subsection*{\centering{Activity Plan}}
+\addcontentsline{toc}{subsection}{Activity Plan}
+\hfill
+\begin{tabular}{|  >{\centering\arraybackslash} {2cm} | >{\centering\arraybackslash} m{3cm} | >{\centering\arraybackslash} m{4cm} | >{\centering\arraybackslash} m{2cm} | >{\centering\arraybackslash} m{2cm} | }
+\hline
+
+\rowcolor{Gray}
+\textbf{Release Due Date}& \textbf{Story# or Other Task} & \textbf{Description \textit{\color{red} Remarks}} & \textbf{Estimated Resource Use} & \textbf{Actual Resource Use} \\ 
+
+\hline
+03.02.2017& Initial Management& Initial project plan and deliveries& 30h& 36h\\
+
+\hline
+27.04.2017& Make database and Webscraper& Make webscraper that puts relevant information into databases& 30h& TBD \\
+
+\hline
+27.04.2017& Query programs& Make programs that fetches information from the database& 6h& TBD \\
+
+\hline
+27.04.2017& Schedule algorithm& Make a course schedule designed to please the user& 50h& TBD \\
+
+\hline
+27.04.2017& api.ai& Take user inputs and run specific actions& 10h& TBD \\
+
+\hline
+27.04.2017& Implement GUIs& The User must have a good experience using the GUI& 20h& TBD \\
+
+\hline
+27.04.2017& Crowdsourcing& Information from courses from other students is crucial for a good user experience and a efficient algorithm& 20h& TBD \\
+
+\hline
+& \rowcolor{Gray}\textbf{Total}& \textbf{Hours}& \textbf{Hours}& \textbf{Hours} \\
+\hline
+\end{tabular}%% END ACTIVITYPLAN
+
+\newpage
+\hfill
+\hfill
+
+\begin{center} %%% START RISK ASSESSMENT
+
+\subsection*{\centering{Risk Assessment Plan}}
+\addcontentsline{toc}{subsection}{Risk Assessment Plan}
+\hfill
+
+\begin{tabular}{ |  >{\centering\arraybackslash} m{3cm} | >{\centering\arraybackslash} m{4cm} | >{\centering\arraybackslash} m{6cm} | }
+%%\begin{tabu}to 1.1\textwidth { | X[c] | X[c] | X[c] | }
+\hline
+\rowcolor{Gray}
+\textbf{Risk}& \textbf{Means to Prevent} & \textbf{Action and Responsible} \\ 
+\hline
+Schedule slips& Regular meetings and deliveries& When schedule slips, the least prioritized stories are dropped. CEO is responsible to keep the group informed about progress status \\
+\hline
+Change in or new stories& Potential users are asked before deciding project plan& Everyone is responsible to decide which stories to add \\
+\hline
+Defect program& Tests& Programmers are responsible to catch defects in their and others programs \\
+\hline
+Interfering schedules& Weekly meetings are planned in advanced& If someone cannot attend a meeting, they can work from home \\
+\hline
+Unfamiliarity with technology& Searching the Internet and asking others for advice& Everyone is responsible to learn the technologies necessary, or give the task to someone else if that cannot be done \\
+\hline
+%%\end{tabu}
+\end{tabular}
+\end{center} %% END RISK ASSESSMENT
+
+\end{document}

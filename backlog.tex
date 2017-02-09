@@ -1,0 +1,88 @@
+\documentclass[pdftex, 12pt, norsk, a4paper, twoside]{article} 
+
+\usepackage[margin=1.3in]{geometry}	
+\usepackage[english]{babel} 
+\selectlanguage{english}
+\usepackage[T1]{fontenc} 					
+\usepackage[utf8]{inputenc} 							
+\usepackage{csquotes}
+\usepackage{graphicx} 			
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage[version=3]{mhchem}
+\usepackage{multirow}								
+\usepackage{lmodern}
+\usepackage{amsmath , amsfonts , amssymb}			
+\usepackage[hang,footnotesize,bf]{caption}
+\usepackage{epstopdf}			
+\usepackage{fixltx2e}
+\usepackage{textcomp,gensymb}		
+\usepackage{float}																
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\setlist[enumerate]{label*=\arabic*.}% formatering av topp og bunntekst.
+
+\pagestyle {fancy}																		% Velger standardoppsettet "fancy" for topp og bunntekst.
+\setlength\headheight{22.5pt}													% Endrer standard størrelse på topptekst, som er 12pt. 
+
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+
+\lhead{Andreas Wilhelm Flått \\ Erlend Johann Skarpnes \\ Håvard Bjørnøy \\ Johannes Austbø Grande}						% Definerer venstre side av toppteksten. "\\" betyr linjeskift.
+\rhead{TDT4140 -- Backlog \\ \today}	% Definerer høyre side av toppteksten. \today betyr datoen det kompileres.
+\lfoot{}
+\cfoot{\thepage}																% Definerer Midten av bunnteksten. \thepage betyr gjeldende sidetall.
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.4pt}				% tegner en strek med tykkelse 0.4pt under toppteksten.
+\renewcommand{\footrulewidth}{0.0pt}				% fjerner streken over bunnteksten (setter tykkelsen til 0.0pt)
+
+%%% fjerner streken, og topp- og bunntekst på sider som ellers er blanke.
+\let\oldcleardoublepage\cleardoublepage 
+\renewcommand{\cleardoublepage}{\clearpage\thispagestyle{empty}\oldcleardoublepage}
+
+\begin{document}
+
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+\hfill\\ % Tvungen newline (fyller linjen med spaces)
+
+\begin{center} % Tittelen på dokumentet; sentrert, stor og fet.
+\LARGE{\textbf{Backlog}}
+\end{center}
+
+\newenvironment{checklist}{%
+  \begin{list}{}{}% whatever you want the list to be
+  \let\olditem\item
+  \renewcommand\item{\olditem -- \marginpar{$\Box$} }
+  \newcommand\checkeditem{\olditem -- \marginpar{$\CheckedBox$} }
+}{%
+  \end{list}
+} 
+
+\begin{checklist}
+
+  \item Finish interview report
+  
+  \item Webscraper
+  
+  \item Bytte av linje
+  
+  \item Lifeline 
+  
+  \item GUI
+  
+  \item Database
+  
+  \item Crowd-source informasjon om vanskelighet i fag
+  
+  \item Poster
+  
+  \item User Stories
+\end{checklist}
+
+\end{document} 
